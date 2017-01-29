@@ -20,8 +20,8 @@ The calibration pattern configuration is (11x7, 45cm).
 
 ## Scripts
 * ```calibrate.py``` and ```common.py``` are adapted from OpenCV project. Example usage is:
-```
-> python calibrate.py square_size 0.03 pattern_width 7 pattern_height 5 data1/raw/*.jpg
+```bash
+python calibrate.py square_size 0.03 pattern_width 7 pattern_height 5 data1/raw/*.jpg
 ```
 * ```cv2.CALIB_FIX_K3``` flag is set for function ```cv2.calibrateCamera``` in order for consistent adpation to ARToolKit camera parameter.
 * ```scripts/ARToolKitCalibrationFileGenerator.cpp``` generates binary camera calibration file for ARToolKit. You need to correctly include the header files of ARToolKit and link to ARToolKit libraries.
