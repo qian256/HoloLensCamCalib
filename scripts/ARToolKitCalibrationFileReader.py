@@ -1,3 +1,18 @@
+#!/usr/bin/env python
+
+'''
+ARToolKitCalibrationFileReader.py
+This file is a part of ARTolKitCamCalib.
+
+Copyright 2017 Long Qian, Alexander Winkler
+Contact: lqian8@jhu.edu
+
+This scripts is able to read ARToolKit camera calibration file, and
+write ARToolKit camera calibration file.
+You may use it however you want.
+
+'''
+
 import numpy as np
 import struct
 
