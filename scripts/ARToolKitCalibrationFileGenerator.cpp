@@ -56,8 +56,11 @@
  *
  */
 
-#define ARDOUBLE_IS_FLOAT
 #include <AR/ar.h>
+
+// adding this to handle "unresolved external symbol ___iob_func" in VS2015
+extern "C" {FILE __iob_func[3] = { *stdin, *stdout, *stderr }; }
+
 
 static ARdouble getSizeFactor(ARdouble dist_factor[], int xsize, int ysize, int dist_function_version)
 {
@@ -189,7 +192,7 @@ static ARdouble getSizeFactor(ARdouble dist_factor[], int xsize, int ysize, int 
 	return sf;
 }
 
-static void convParam(float intr[3][4], float dist[4], int xsize, int ysize, ARParam *param)
+static void convParam(ARdouble intr[3][4], ARdouble dist[4], int xsize, int ysize, ARParam *param)
 {
 	ARdouble   s;
 	int      i, j;
@@ -227,12 +230,12 @@ Conversion from opencv camera calibration to artoolkit camera calibration
 OpenCV camera calibration format: http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_calib3d/py_calibration/py_calibration.html
 */
 void createHoloLenCamParam() {
-	float intr[3][4] = {
+	ARdouble intr[3][4] = {
 		{ 1036.2845592203307f, 0.0f, 379.5433134568496f, 0.0f },
 		{ 0.0f, 1033.2170516394765f, 227.4549666666871f, 0.0f },
 		{ 0.0f, 0.0f, 1.0f, 0.0f },
 	};
-	float dist[4] = { 0.15209589960148337f, -0.022675086190981884f, 0.004613154315075395f, -0.017384513909494824f };
+	ARdouble dist[4] = { 0.15209589960148337f, -0.022675086190981884f, 0.004613154315075395f, -0.017384513909494824f };
 	int xsize = 896;
 	int ysize = 504;
 	ARParam paramHolo;
