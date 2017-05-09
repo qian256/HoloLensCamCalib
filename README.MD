@@ -4,7 +4,7 @@ Author: [Long Qian](http://longqian.me/aboutme)
 
 Date: 2017-02-01
 
-This repository contains **camera calibration file** of HoloLens [front-facing camera](https://developer.microsoft.com/en-us/windows/holographic/locatable_camera), with the 896x504 configuration.
+This repository contains **camera calibration file** of HoloLens [front-facing camera](https://developer.microsoft.com/en-us/windows/holographic/locatable_camera), with the 896x504 configuration. Please refer to [**Locatable Camera in Unity**](https://developer.microsoft.com/en-us/windows/mixed-reality/locatable_camera_in_unity) about how to obtain chessboard images from your own HoloLens.
 
 ## Near range calibration
 The folder ```near``` contains calibration images collected from HoloLens and the calibration results of it.
