@@ -2,30 +2,31 @@ HoloLens Camera Calibration
 ===
 Author: [Long Qian](https://longqian.me/aboutme)
 
-Date: 2017-02-01
+Date: 2018-03-25
 
-This repository contains **camera calibration file** of HoloLens [front-facing camera](https://developer.microsoft.com/en-us/windows/holographic/locatable_camera), with the 896x504 configuration.
+This repository contains **camera calibration file** of HoloLens [front-facing camera](https://developer.microsoft.com/en-us/windows/holographic/locatable_camera), with the following configurations:
 
-## Near range calibration
-The folder ```near``` contains calibration images collected from HoloLens and the calibration results of it.
-The calibration pattern for near range calibration is (7x5, 30cm).
-The images are taken from a distance of **about 0.3m to 0.5m**.
+* 896x504, recommended for fast processing
+* 1344x756, recommended for wide FOV
+* 1280x720, not recommended
 
-## Far range calibration
-The folder ```far``` contains the calibration images and results of HoloLens, with distance of **about 1m to 1.5m**.
-The calibration pattern configuration is (11x7, 45cm).
+OpenCV camera calibration scripts are used to calibrate the HoloLens camera (```src/calibrate.py```).  A custom Visual Studio solution (```src/ARToolKitCalibrationFileGenerator```) converts the parameters from [OpenCV format](https://docs.opencv.org/3.1.0/dc/dbb/tutorial_py_calibration.html) to [ARToolKit format](https://artoolkit.org/documentation/doku.php?id=2_Configuration:config_camera_calibration).
 
-## Scripts
-* ```calibrate.py``` and ```common.py``` are adapted from OpenCV project. Example usage is:
+## FAQ
+
+1. How to calibrate using images taken with my own HoloLens?
+
+Run the script ```src/calibrate.py``` with your own checkerboard setting, and the path to your own images, for example:
 ```bash
-python calibrate.py --square_size 0.03 --pattern_width 7 --pattern_height 5 data1/raw/*.jpg
+python calibrate.py --square_size 0.03 --pattern_width 7 --pattern_height 5 PATH/TO/IMAGE/*.jpg
 ```
-* ```cv2.CALIB_FIX_K3``` flag is set for function ```cv2.calibrateCamera``` in order for consistent adpation to ARToolKit camera parameter.
-* ```scripts/ARToolKitCalibrationFileGenerator.cpp``` generates binary camera calibration file for ARToolKit. You need to correctly include the header files of ARToolKit and link to ARToolKit libraries.
-* ```scripts/ARToolKitCalibrationFileReader.py``` makes your life easier when you want to see the values of an ARToolKit calibration file, and modify them.
 
+2. How to convert my own OpenCV calibration file to ARToolKit one?
 
-## Results
-* ```hololens896x504.json``` and ```hololens896x504.yaml``` are the camera calibration files of [OpenCV format](http://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html).
-* ```hololens896x504.dat``` is the calibration file of HoloLens camera, for [ARToolKit](https://artoolkit.org/documentation/doku.php?id=2_Configuration:config_camera_calibration).
+Launch ```src/ARToolKitCalibrationFileGenerator.sln```, modify the parameters in ```main()```, and run it. The Visual Studio 2017 solution is shipped with ARToolKit binaries, and runs on Windows 10 machine.
+
+3. How to I verify the binary ARToolKit calibration file?
+
+Run the ```src/ARToolKitCalibrationFileGenerator/ARToolKitCalibrationFileReader/py``` with the specific ```readFileName``` parameter.
+
 

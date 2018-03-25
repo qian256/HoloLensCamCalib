@@ -20,7 +20,7 @@ np.set_printoptions(suppress=True)
 np.set_printoptions(precision=4)
 np.set_printoptions(formatter={'float_kind': '{: 0.4f}'.format})
 
-readFileName = "camera_para.dat"
+readFileName = "hololens1344x756.dat"
 outFileName = "temp.dat"
 
 fileIn = open(readFileName, 'rb')

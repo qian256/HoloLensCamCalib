@@ -226,24 +226,22 @@ static void convParam(float intr[3][4], float dist[4], int xsize, int ysize, ARP
 Conversion from opencv camera calibration to artoolkit camera calibration
 OpenCV camera calibration format: http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_calib3d/py_calibration/py_calibration.html
 */
-void createHoloLenCamParam() {
+int main(int argc, char *argv[]) {
+
+	printf("Please make sure to modify the following parameters\n\n");
+
 	float intr[3][4] = {
-		{ 1036.2845592203307f, 0.0f, 379.5433134568496f, 0.0f },
-		{ 0.0f, 1033.2170516394765f, 227.4549666666871f, 0.0f },
+		{ 1545.412763409073, 0.0, 597.2250365319205, 0.0 },
+		{ 0.0, 1551.2172618412867, 322.12956014588366, 0.0 },
 		{ 0.0f, 0.0f, 1.0f, 0.0f },
 	};
-	float dist[4] = { 0.15209589960148337f, -0.022675086190981884f, 0.004613154315075395f, -0.017384513909494824f };
-	int xsize = 896;
-	int ysize = 504;
+	float dist[4] = { 0.13010559712865416, 0.11946234068479318, -0.007851979962866925, -0.007069112800439592 };
+	int xsize = 1280;
+	int ysize = 720;
 	ARParam paramHolo;
 	convParam(intr, dist, xsize, ysize, &paramHolo);
 	arParamDisp(&paramHolo);
-	arParamSave("hololens896x504.dat", 1, &paramHolo);
-}
-
-int main(int argc, char *argv[]) {
-
-	createHoloLenCamParam();
+	arParamSave("camera_param.dat", 1, &paramHolo);
 
 	return 0;
 }

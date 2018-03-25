@@ -67,6 +67,8 @@ if __name__ == '__main__':
     pattern_points[:, :2] = np.indices(pattern_size).T.reshape(-1, 2)
     pattern_points *= square_size
 
+    print(square_size)
+
     obj_points = []
     img_points = []
     h, w = 0, 0
