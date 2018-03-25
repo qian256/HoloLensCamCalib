@@ -236,13 +236,13 @@ int main(int argc, char *argv[]) {
 	printf("Please make sure to modify the following parameters\n\n");
 
 	float intr[3][4] = {
-		{ 1545.412763409073, 0.0, 597.2250365319205, 0.0 },
-		{ 0.0, 1551.2172618412867, 322.12956014588366, 0.0 },
+		{ 1031.3283219694933, 0.0, 679.6961920863029, 0.0 },
+		{ 0.0, 1034.5493090172774, 394.47884361100535, 0.0 },
 		{ 0.0f, 0.0f, 1.0f, 0.0f },
 	};
-	float dist[4] = { 0.13010559712865416, 0.11946234068479318, -0.007851979962866925, -0.007069112800439592 };
-	int xsize = 1280;
-	int ysize = 720;
+	float dist[4] = { 0.23052173536082066, -0.36688689645877415, -0.0016243705962620857, -0.001252887624425678 };
+	int xsize = 1344;
+	int ysize = 756;
 	ARParam paramHolo;
 	convParam(intr, dist, xsize, ysize, &paramHolo);
 	arParamDisp(&paramHolo);
