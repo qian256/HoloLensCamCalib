@@ -59,6 +59,11 @@
 #define ARDOUBLE_IS_FLOAT
 #include <AR/ar.h>
 
+
+// adding this to handle "unresolved external symbol ___iob_func" in VS2015
+extern "C" {FILE __iob_func[3] = { *stdin, *stdout, *stderr }; }
+
+
 static ARdouble getSizeFactor(ARdouble dist_factor[], int xsize, int ysize, int dist_function_version)
 {
 	ARdouble  ox, oy, ix, iy;
@@ -189,7 +194,7 @@ static ARdouble getSizeFactor(ARdouble dist_factor[], int xsize, int ysize, int 
 	return sf;
 }
 
-static void convParam(float intr[3][4], float dist[4], int xsize, int ysize, ARParam *param)
+static void convParam(ARdouble intr[3][4], ARdouble dist[4], int xsize, int ysize, ARParam *param)
 {
 	ARdouble   s;
 	int      i, j;
