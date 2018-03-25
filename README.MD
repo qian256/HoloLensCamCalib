@@ -23,10 +23,10 @@ python calibrate.py --square_size 0.03 --pattern_width 7 --pattern_height 5 PATH
 
 2. How to convert my own OpenCV calibration file to ARToolKit one?
 
-Launch ```src/ARToolKitCalibrationFileGenerator.sln```, modify the parameters in ```main()```, and run it. The Visual Studio 2017 solution is shipped with ARToolKit binaries, and runs on Windows 10 machine.
+Launch ```src/ARToolKitCalibrationFileGenerator.sln```, modify the parameters in ```main()```, and run it. The Visual Studio 2017 solution is shipped with ARToolKit binaries, and should run on Windows 10 machine instantly.
 
 3. How to I verify the binary ARToolKit calibration file?
 
-Run the ```src/ARToolKitCalibrationFileGenerator/ARToolKitCalibrationFileReader/py``` with the specific ```readFileName``` parameter.
+Run the ```src/ARToolKitCalibrationFileGenerator/ARToolKitCalibrationFileReader.py``` with the specific ```readFileName``` parameter.
 
 
